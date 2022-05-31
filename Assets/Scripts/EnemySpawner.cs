@@ -8,21 +8,26 @@ public class EnemySpawner : MonoBehaviour
     Transform _choosedSpawn;
     public float secsBetweenSpawns;
 
-    private void Start() {
-        int numberOfChoices=spawners.Length;
-        int numberChoosen=Random.Range(0,numberOfChoices);
-        _choosedSpawn=spawners[numberChoosen];
+    private void Start()
+    {
         StartCoroutine("Spawner");
-        
     }
 
     public IEnumerator Spawner(){
-        
-        GameObject enemy=ObjectPool.sharedInstance.GetEnemiesPooled();
-        if(enemy!=null){
-            enemy.SetActive(true);
+        while (Time.timeScale == 1)
+        {
+            int numberOfChoices = spawners.Length;
+            int numberChoosen = Random.Range(0, numberOfChoices);
+            _choosedSpawn = spawners[numberChoosen];
+
+            GameObject enemy = ObjectPool.sharedInstance.GetEnemiesPooled();
+            if (enemy != null && !enemy.activeInHierarchy)
+            {
+                enemy.transform.position = _choosedSpawn.position;
+                enemy.SetActive(true);
+            }
+            yield return new WaitForSeconds(1f);
         }
-        yield return new WaitForSeconds(secsBetweenSpawns);
     }
 
 }
