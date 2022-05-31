@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    Rigidbody2D _BulletRb;
+    public float bulletSpeed;
+    private void Awake() {
+        _BulletRb=GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void FixedUpdate() {
+        if(this.gameObject.activeInHierarchy){
+            _BulletRb.AddForce(new Vector2(0,bulletSpeed*Time.fixedDeltaTime),ForceMode2D.Impulse);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag=="DeadZone"){
+            this.gameObject.SetActive(false);
+        }
     }
 }

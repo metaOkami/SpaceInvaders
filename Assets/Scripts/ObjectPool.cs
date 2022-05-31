@@ -5,29 +5,49 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public static ObjectPool sharedInstance;
-    public List<GameObject> pooledObjects;
-    public GameObject objectToPool;
-    public int amountToPool;
+    public List<GameObject> pooledBullets;
+    public List<GameObject> pooledEnemies;
+    public GameObject Bullets;
+    public GameObject Enemies;
+    public int BulletsToPool;
+    public int EnemiesToPool;
 
     private void Awake() {
         sharedInstance=this;
     }
 
     private void Start() {
-        pooledObjects=new List<GameObject>();
-        GameObject tmp;
-        for(int i=0;i<amountToPool;i++){
-            tmp=Instantiate(objectToPool);
-            tmp.SetActive(false);
-            pooledObjects.Add(tmp);
+        pooledBullets=new List<GameObject>();
+        GameObject bulletTmp;
+        for(int i=0;i<BulletsToPool;i++){
+            bulletTmp=Instantiate(Bullets);
+            bulletTmp.SetActive(false);
+            pooledBullets.Add(bulletTmp);
+        }
+        GameObject enemieTmp;
+        for (int i = 0; i < EnemiesToPool; i++)
+        {
+            enemieTmp=Instantiate(Enemies);
+            enemieTmp.SetActive(false);
+            pooledEnemies.Add(enemieTmp);
         }
     }
 
-    public GameObject GetPooledObject(){
-        for (int i = 0; i < amountToPool; i++)
+    public GameObject GetBulletsPooled(){
+        for (int i = 0; i < BulletsToPool; i++)
         {
-            if(!pooledObjects[i].activeInHierarchy){
-                return pooledObjects[i];
+            if(!pooledBullets[i].activeInHierarchy){
+                return pooledBullets[i];
+            }
+        }
+        return null;
+    }
+
+    public GameObject GetEnemiesPooled(){
+        for (int i = 0; i < EnemiesToPool; i++)
+        {
+            if(!pooledEnemies[i].activeInHierarchy){
+                return pooledEnemies[i];
             }
         }
         return null;

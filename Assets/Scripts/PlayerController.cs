@@ -5,22 +5,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
-    Rigidbody2D _playerRb;
-
-    private void Awake() {
-        _playerRb=GetComponent<Rigidbody2D>();
-    }
-    private void FixedUpdate() {
+    
+    private void Update() {
         PlayerMovement();
         PlayerAttack();
     }
     private void PlayerMovement(){
-            Vector3 inputMovement=new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"))*playerSpeed*Time.fixedDeltaTime;
+            Vector3 inputMovement=new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"))*playerSpeed*Time.deltaTime;
             transform.position=new Vector2(inputMovement.x+transform.position.x,inputMovement.y+transform.position.y);
     }
     private void PlayerAttack(){
-        if(Input.GetButtonDown("Fire1")){
-            GameObject bullet = ObjectPool.sharedInstance.GetPooledObject();
+        if(Input.GetButtonUp("Fire1")){
+            GameObject bullet = ObjectPool.sharedInstance.GetBulletsPooled();
             if(bullet!=null){
                 bullet.transform.position=transform.position;
                 bullet.SetActive(true);
