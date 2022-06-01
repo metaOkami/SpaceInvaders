@@ -17,13 +17,9 @@ public class EnemyController : MonoBehaviour
     GameObject _ParedDerecha;
     GameObject _ParedBaja;
 
-    public Text Texto;
+    Text Texto;
     ObserverPattern.Subject subject=new ObserverPattern.Subject();
     
-
-    
-
-
     private void Awake()
     {
         
@@ -35,6 +31,7 @@ public class EnemyController : MonoBehaviour
     }
     private void Start()
     {
+        Texto = FindObjectOfType<Text>();
         ObserverPattern.Score score = new ObserverPattern.Score(Texto, new ObserverPattern.OneHit());
         subject.AddObserver(score);
         _numberChoosen = Random.Range(0, Points.Length);
@@ -54,6 +51,15 @@ public class EnemyController : MonoBehaviour
         }else if (transform.position.y < _ParedBaja.transform.position.y)
         {
             EnemyGameobject.SetActive(false);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bala")
+        {
+            subject.Notify();
+            this.gameObject.SetActive(false);
+            collision.gameObject.SetActive(false);
         }
     }
 }

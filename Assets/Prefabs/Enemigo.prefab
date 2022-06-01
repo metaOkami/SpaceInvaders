@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4286850156927100864}
   - component: {fileID: 8844535339337112378}
   - component: {fileID: 3757934284436579761}
-  m_Layer: 0
+  - component: {fileID: 4318321177049339665}
+  m_Layer: 6
   m_Name: Enemigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,8 +103,34 @@ MonoBehaviour:
   - {fileID: 3964344558147805731}
   - {fileID: 7632831935525537040}
   - {fileID: 4547497192131125036}
-  speed: 10
+  speed: 5
   EnemyGameobject: {fileID: 939000070357643651}
+--- !u!61 &4318321177049339665
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939000070357643651}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.28, y: 1.28}
+  m_EdgeRadius: 0
 --- !u!1 &2263072805741263708
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7632831935525537040}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pto1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4547497192131125036}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pto1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3964344558147805731}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pto1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
