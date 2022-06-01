@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
                 enemy.transform.position = _choosedSpawn.position;
                 enemy.SetActive(true);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(secsBetweenSpawns);
         }
     }
 

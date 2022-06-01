@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
     
+
     private void Update() {
         PlayerMovement();
         PlayerAttack();
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag=="TransporteParedes"){
+        if(other.tag=="DeathEnemyZone"){
             if(transform.position.x<other.gameObject.transform.position.x){
                 transform.position=new Vector2(GameObject.Find("ParedIzquierda").transform.position.x+1,transform.position.y);
             }else{
@@ -33,3 +34,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
+
