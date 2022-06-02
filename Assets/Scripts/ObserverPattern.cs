@@ -6,6 +6,11 @@ using UnityEngine.UI;
 public class ObserverPattern : MonoBehaviour
 {
     public static int score = 0;
+
+    private void Update()
+    {
+        
+    }
     public class Subject
     {
         
@@ -58,7 +63,7 @@ public class ObserverPattern : MonoBehaviour
         }
 
         
-        void SetScore(int score)
+        public void SetScore(int score)
         {
             ScoreText.GetComponent<Text>().text = "Tu puntuacion es: " + score;
         }

@@ -24,6 +24,7 @@ public class SQLiteWritter : MonoBehaviour
     //Referencia que necesitamos para leer datos
     IDataReader reader;
     // Start is called before the first frame update
+    public GameObject Player;
     void Start()
     {
         
@@ -65,13 +66,25 @@ public class SQLiteWritter : MonoBehaviour
         dbConnection = new SqliteConnection(strConexion);
         dbConnection.Open();
     }
-
-    void INSERT(float dato)
+    void CerrarDB()
     {
-        dato = ObserverPattern.score;
-        // Crear la consulta
+        // Cerrar las conexiones
+        
+        dbCommand.Dispose();
+        dbCommand = null;
+        dbConnection.Close();
+        dbConnection = null;
+    }
+
+    public void GuardarSQLite()
+    {
+        INSERT(ObserverPattern.score, Player.transform.position.x, Player.transform.position.y);
+    }
+    public void INSERT(int dato,float PlayerPosX,float PlayerPosY)
+    {
+        AbrirDB();
         dbCommand = dbConnection.CreateCommand();
-        string sqlQuery = string.Format("INSERT INTO media_types(Name) values(\"{0}\")", dato); //String.Format podemos pasarle datos a una cadena de caracteres para que tome el argumento
+        string sqlQuery = string.Format("UPDATE PlayerStats SET PlayerScore = \"{0}\",PlayerPositionX = \"{1}\", PlayerPositionY = \"{2}\"",dato,PlayerPosX,PlayerPosY);
         dbCommand.CommandText = sqlQuery;
         //Para poder contar datos de las filas tenemos que poner
         dbCommand.ExecuteScalar();

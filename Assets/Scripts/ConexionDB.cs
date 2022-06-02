@@ -23,6 +23,7 @@ public class ConexionDB : MonoBehaviour
     IDbCommand dbCommand;
     //Variable para leer
     IDataReader reader;
+     
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +60,8 @@ public class ConexionDB : MonoBehaviour
             float posPjX = reader.GetFloat(1);
             
             float posPjY = reader.GetFloat(2);
-            
+
+            Debug.Log(score + " " + posPjX + " " + posPjY);
            
         }
         // Cerrar las conexiones
