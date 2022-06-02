@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     GameObject _ParedDerecha;
     GameObject _ParedBaja;
 
-    Text Texto;
+    GameObject Texto;
     ObserverPattern.Subject subject=new ObserverPattern.Subject();
     
     private void Awake()
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
     }
     private void Start()
     {
-        Texto = FindObjectOfType<Text>();
+        Texto = GameObject.Find("ScoreText");
         ObserverPattern.Score score = new ObserverPattern.Score(Texto, new ObserverPattern.OneHit());
         subject.AddObserver(score);
         _numberChoosen = Random.Range(0, Points.Length);

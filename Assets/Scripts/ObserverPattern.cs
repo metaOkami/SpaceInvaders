@@ -42,10 +42,10 @@ public class ObserverPattern : MonoBehaviour
     {
         
         
-        Text ScoreText;
+        GameObject ScoreText;
         ScoreEvents Events;
 
-        public Score(Text scoretext, ScoreEvents events)
+        public Score(GameObject scoretext, ScoreEvents events)
         {
             this.ScoreText = scoretext;
             this.Events = events;
@@ -60,7 +60,7 @@ public class ObserverPattern : MonoBehaviour
         
         void SetScore(int score)
         {
-            ScoreText.text = "Tu puntuacion es: " + score;
+            ScoreText.GetComponent<Text>().text = "Tu puntuacion es: " + score;
         }
     }
     //Events
