@@ -6,22 +6,14 @@ using UnityEngine.UI;
 public class ObserverPattern : MonoBehaviour
 {
     public static int score = 0;
-
-    private void Update()
-    {
-        
-    }
     public class Subject
     {
-        
         List<Observer> observers = new List<Observer>();
 
-        
         public void Notify()
         {
             for (int i = 0; i < observers.Count; i++)
             {
-                
                 observers[i].OnNotify();
             }
         }
@@ -32,10 +24,6 @@ public class ObserverPattern : MonoBehaviour
             observers.Add(observer);
         }
 
-        
-        public void RemoveObserver(Observer observer)
-        {
-        }
     }
     
     public abstract class Observer
@@ -45,18 +33,15 @@ public class ObserverPattern : MonoBehaviour
 
     public class Score : Observer
     {
-        
-        
+       
         GameObject ScoreText;
         ScoreEvents Events;
-
         public Score(GameObject scoretext, ScoreEvents events)
         {
             this.ScoreText = scoretext;
             this.Events = events;
         }
 
-        
         public override void OnNotify()
         {
             SetScore(Events.AddPoints());
@@ -74,10 +59,8 @@ public class ObserverPattern : MonoBehaviour
         public abstract int AddPoints();
     }
 
-
     public class OneHit : ScoreEvents
     {
-        
         public override int AddPoints()
         {
             return score+=10;

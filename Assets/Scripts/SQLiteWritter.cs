@@ -25,16 +25,7 @@ public class SQLiteWritter : MonoBehaviour
     IDataReader reader;
     // Start is called before the first frame update
     public GameObject Player;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     void AbrirDB()
     {
         // Crear y abrir la conexión

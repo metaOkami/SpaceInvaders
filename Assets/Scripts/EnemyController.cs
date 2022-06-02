@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    public static int deads;
+    
     public Transform[] Points;
     public float speed;
     int _numberChoosen;
